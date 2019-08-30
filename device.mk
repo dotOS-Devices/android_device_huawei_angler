@@ -378,7 +378,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Write Manufacturer & Model information in created media files.
 # IMPORTANT: ONLY SET THIS PROPERTY TO TRUE FOR PUBLIC DEVICES
-ifneq ($(filter aosp_angler% statix_angler%, $(TARGET_PRODUCT)),)
+ifneq ($(filter aosp_angler% dot_angler%, $(TARGET_PRODUCT)),)
 PRODUCT_PROPERTY_OVERRIDES += \
     media.recorder.show_manufacturer_and_model=true
 else
@@ -539,10 +539,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.oem_unlock_supported=1
 
-# Inherit custom memory configurations
-$(call inherit-product, vendor/statix/config/dalvik/phone-xxhdpi-3072-dalvik-heap.mk)
-$(call inherit-product, vendor/statix/config/dalvik/phone-xxhdpi-3072-hwui-memory.mk)
-
+# Setup dalvik vm configs
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 # drmservice prop
 PRODUCT_PROPERTY_OVERRIDES += \
